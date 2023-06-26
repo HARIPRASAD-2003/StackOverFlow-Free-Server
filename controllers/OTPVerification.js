@@ -58,8 +58,10 @@ export const sendOTPVerification = async (req,res) => {
 
         console.log(newOTPVerification)
 
+        console.log(transporter)
         await newOTPVerification.save();
         await transporter.sendMail(mailOptions)
+
 
         res.json({
             status: "PENDING",
