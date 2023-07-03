@@ -7,14 +7,23 @@ dotenv.config()
 
 const transporter = nodemailer.createTransport({
     host: "smtp.office365.com",
-    port: 587,
-    secure: false,
+    // port: 587,
+    // secure: false,
     auth: {
       user: process.env.AUTH_EMAIL,
       pass: "Harish!!!@))#",
     },
   });
 
+
+  transporter.verify((error, success) => {
+    if(error){
+        console.log(error)
+    } else {
+        console.log("Ready for sending emails...");
+        console.log(success);
+    }
+  })
 
 export const sendOTPVerification = async (req,res) => {
     try {
