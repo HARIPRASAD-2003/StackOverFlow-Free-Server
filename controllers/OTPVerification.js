@@ -51,7 +51,7 @@ export const sendFeedback = async(req, res) => {
 
           const mailOption = {
             from: process.env.AUTH_EMAIL,
-            to: 'hariprasadr.it2021@citchennai.net',
+            to: process.env.FEEDBACK,
             subject: `Feedback from ${name}`,
             html: `<html>
               <body style="font-family: Arial, sans-serif; background-color: #f5f5f5; padding: 20px;">
