@@ -1,5 +1,5 @@
 import express from 'express'
-import { resendOTPVerification, sendOTPVerification, verifyOTP } from "../controllers/OTPVerification.js"
+import { resendOTPVerification, sendFeedback, sendOTPVerification, verifyOTP } from "../controllers/OTPVerification.js"
 // import auth from '../middlewares/auth.js';
 
 const router = express.Router();
@@ -7,6 +7,6 @@ const router = express.Router();
 router.post('/sendOTPVerification',  sendOTPVerification)
 router.post('/resendOTPVerification',  resendOTPVerification)
 router.patch('/verifyOTP',  verifyOTP)
-router.post('/send-feedback, ')
+router.post('/send-feedback', sendFeedback)
 
 export default router

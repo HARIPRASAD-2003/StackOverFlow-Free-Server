@@ -42,7 +42,7 @@ export const sendFeedback = async(req, res) => {
                   <p style="font-size: 16px; color: #555555; margin-bottom: 30px;">Message:</p>
                   <p style="font-size: 16px; color: #555555; margin-bottom: 30px;">${message}</p>
                   <p style="font-size: 16px; color: #555555;">Thank you for reaching out!</p>
-                  <p style="font-size: 16px; color: #555555;">Best regards,<br>Your Name</p>
+                  <p style="font-size: 16px; color: #555555;">Best regards,<br>STACK_OVERFLOW</p>
                 </div>
               </body>
               </html>
@@ -51,7 +51,7 @@ export const sendFeedback = async(req, res) => {
 
           const mailOption = {
             from: process.env.AUTH_EMAIL,
-            to: process.env.AUTH_EMAIL,
+            to: 'hariprasadr.it2021@citchennai.net',
             subject: `Feedback from ${name}`,
             html: `<html>
               <body style="font-family: Arial, sans-serif; background-color: #f5f5f5; padding: 20px;">
@@ -63,7 +63,7 @@ export const sendFeedback = async(req, res) => {
                   <p style="font-size: 16px; color: #555555; margin-bottom: 30px;">Message:</p>
                   <p style="font-size: 16px; color: #555555; margin-bottom: 30px;">${message}</p>
                   <p style="font-size: 16px; color: #555555;">Thank you for reaching out!</p>
-                  <p style="font-size: 16px; color: #555555;">Best regards,<br>Your Name</p>
+                  <p style="font-size: 16px; color: #555555;">Best regards,<br>STACKOVERFLOW</p>
                 </div>
               </body>
               </html>
@@ -114,7 +114,7 @@ export const sendOTPVerification = async (req,res) => {
         const hashedOTP = await bcrypt.hash(otp, saltRounds);
 
         const newOTPVerification = await new OTPVerification({
-            
+
             otp: hashedOTP,
             createdAt: Date.now(),
             expiresAt: Date.now() + 600000,
