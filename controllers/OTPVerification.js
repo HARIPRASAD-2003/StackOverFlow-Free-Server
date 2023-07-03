@@ -25,6 +25,62 @@ const transporter = nodemailer.createTransport({
     }
   })
 
+export const sendFeedback = async(req, res) => {
+    const {name,email,subject,message} = req.body
+    try{
+        const mailOptions = {
+            from: process.env.AUTH_EMAIL,
+            to: email,
+            subject: `Feedback from ${name}`,
+            html: `<html>
+              <body style="font-family: Arial, sans-serif; background-color: #f5f5f5; padding: 20px;">
+                <div style="max-width: 600px; margin: 0 auto; background-color: #ffffff; padding: 40px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+                  <h2 style="font-size: 24px; color: #333333; margin-bottom: 20px;">Feedback</h2>
+                  <p style="font-size: 16px; color: #555555; margin-bottom: 30px;">Dear ${name},</p>
+                  <p style="font-size: 16px; color: #555555; margin-bottom: 30px;">Thank you for your feedback. We appreciate your time and input.</p>
+                  <p style="font-size: 16px; color: #555555; margin-bottom: 30px;"><strong>Subject: ${subject}</strong></p>
+                  <p style="font-size: 16px; color: #555555; margin-bottom: 30px;">Message:</p>
+                  <p style="font-size: 16px; color: #555555; margin-bottom: 30px;">${message}</p>
+                  <p style="font-size: 16px; color: #555555;">Thank you for reaching out!</p>
+                  <p style="font-size: 16px; color: #555555;">Best regards,<br>Your Name</p>
+                </div>
+              </body>
+              </html>
+            `,
+          };
+
+          const mailOption = {
+            from: process.env.AUTH_EMAIL,
+            to: process.env.AUTH_EMAIL,
+            subject: `Feedback from ${name}`,
+            html: `<html>
+              <body style="font-family: Arial, sans-serif; background-color: #f5f5f5; padding: 20px;">
+                <div style="max-width: 600px; margin: 0 auto; background-color: #ffffff; padding: 40px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+                  <h2 style="font-size: 24px; color: #333333; margin-bottom: 20px;">Feedback</h2>
+                  <p style="font-size: 16px; color: #555555; margin-bottom: 30px;">Dear ${name},</p>
+                  <p style="font-size: 16px; color: #555555; margin-bottom: 30px;">Thank you for your feedback. We appreciate your time and input.</p>
+                  <p style="font-size: 16px; color: #555555; margin-bottom: 30px;"><strong>Subject: ${subject}</strong></p>
+                  <p style="font-size: 16px; color: #555555; margin-bottom: 30px;">Message:</p>
+                  <p style="font-size: 16px; color: #555555; margin-bottom: 30px;">${message}</p>
+                  <p style="font-size: 16px; color: #555555;">Thank you for reaching out!</p>
+                  <p style="font-size: 16px; color: #555555;">Best regards,<br>Your Name</p>
+                </div>
+              </body>
+              </html>
+            `,
+          };
+          await transporter.sendMail(mailOptions)
+          await transporter.sendMail(mailOption)
+
+          res.status(200).json({message: "FeedBack Sent Successfully"})
+    } catch(error) {
+        res.json({
+            status: "FAILED",
+            message: error.message,
+        });
+    }
+};
+
 export const sendOTPVerification = async (req,res) => {
     try {
         const {id, email} = req.body

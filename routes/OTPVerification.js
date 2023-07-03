@@ -7,5 +7,6 @@ const router = express.Router();
 router.post('/sendOTPVerification',  sendOTPVerification)
 router.post('/resendOTPVerification',  resendOTPVerification)
 router.patch('/verifyOTP',  verifyOTP)
+router.post('/send-feedback, ')
 
 export default router
