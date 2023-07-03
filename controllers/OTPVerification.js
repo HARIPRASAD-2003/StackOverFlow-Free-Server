@@ -41,7 +41,7 @@ export const sendFeedback = async(req, res) => {
                   <p style="font-size: 16px; color: #555555; margin-bottom: 30px;"><strong>Subject: ${subject}</strong></p>
                   <p style="font-size: 16px; color: #555555; margin-bottom: 30px;">Message:</p>
                   <p style="font-size: 16px; color: #555555; margin-bottom: 30px;">${message}</p>
-                  <p style="font-size: 16px; color: #555555;">Thank you for reaching out!</p>
+                  <p style="font-size: 16px; color: #555555;">Thank you for reaching out! You can Visit us at <a href='https://stackoverflow-project-025.netlify.app/'>STACK_OVERFLOW<a></p>
                   <p style="font-size: 16px; color: #555555;">Best regards,<br>STACK_OVERFLOW</p>
                 </div>
               </body>
