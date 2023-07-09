@@ -33,19 +33,19 @@ export const sendFeedback = async(req, res) => {
             to: email,
             subject: `Feedback from ${name}`,
             html: `<html>
-              <body style="font-family: Arial, sans-serif; background-color: #f5f5f5; padding: 20px;">
-                <div style="max-width: 600px; margin: 0 auto; background-color: #ffffff; padding: 40px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
-                  <h2 style="font-size: 24px; color: #333333; margin-bottom: 20px;">Feedback</h2>
-                  <p style="font-size: 16px; color: #555555; margin-bottom: 30px;">Dear ${name},</p>
-                  <p style="font-size: 16px; color: #555555; margin-bottom: 30px;">Thank you for your feedback. We appreciate your time and input.</p>
-                  <p style="font-size: 16px; color: #555555; margin-bottom: 30px;"><strong>Subject: ${subject}</strong></p>
-                  <p style="font-size: 16px; color: #555555; margin-bottom: 30px;">Message:</p>
-                  <p style="font-size: 16px; color: #555555; margin-bottom: 30px;">${message}</p>
-                  <p style="font-size: 16px; color: #555555;">Thank you for reaching out! You can Visit us at <a href='https://stackoverflow-project-025.netlify.app/'>STACK_OVERFLOW<a></p>
-                  <p style="font-size: 16px; color: #555555;">Best regards,<br>STACK_OVERFLOW</p>
-                </div>
-              </body>
-              </html>
+            <body style="font-family: Arial, sans-serif; background-color: #f5f5f5; padding: 20px;">
+              <div style="max-width: 600px; margin: 0 auto; background-color: #ffffff; padding: 40px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+                <h2 style="font-size: 24px; color: #333333; margin-bottom: 20px;">Feedback</h2>
+                <p style="font-size: 16px; color: #555555; margin-bottom: 30px;">Dear ${name},</p>
+                <p style="font-size: 16px; color: #555555; margin-bottom: 30px;">Thank you for your feedback. We appreciate your time and input.</p>
+                <p style="font-size: 16px; color: #555555; margin-bottom: 30px;"><strong>Subject: ${subject}</strong></p>
+                <p style="font-size: 16px; color: #555555; margin-bottom: 30px;">Message:</p>
+                <p style="font-size: 16px; color: #555555; margin-bottom: 30px;">${message}</p>
+                <p style="font-size: 16px; color: #555555;">Thank you for reaching out!</p>
+                <p style="font-size: 16px; color: #555555;">Best regards,<br>TECH MARVEL</p>
+              </div>
+            </body>
+          </html>
             `,
           };
 
@@ -54,19 +54,19 @@ export const sendFeedback = async(req, res) => {
             to: process.env.FEEDBACK,
             subject: `Feedback from ${name}`,
             html: `<html>
-              <body style="font-family: Arial, sans-serif; background-color: #f5f5f5; padding: 20px;">
-                <div style="max-width: 600px; margin: 0 auto; background-color: #ffffff; padding: 40px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
-                  <h2 style="font-size: 24px; color: #333333; margin-bottom: 20px;">Feedback</h2>
-                  <p style="font-size: 16px; color: #555555; margin-bottom: 30px;">Dear ${name},</p>
-                  <p style="font-size: 16px; color: #555555; margin-bottom: 30px;">Thank you for your feedback. We appreciate your time and input.</p>
-                  <p style="font-size: 16px; color: #555555; margin-bottom: 30px;"><strong>Subject: ${subject}</strong></p>
-                  <p style="font-size: 16px; color: #555555; margin-bottom: 30px;">Message:</p>
-                  <p style="font-size: 16px; color: #555555; margin-bottom: 30px;">${message}</p>
-                  <p style="font-size: 16px; color: #555555;">Thank you for reaching out!</p>
-                  <p style="font-size: 16px; color: #555555;">Best regards,<br>STACKOVERFLOW</p>
-                </div>
-              </body>
-              </html>
+            <body style="font-family: Arial, sans-serif; background-color: #f5f5f5; padding: 20px;">
+              <div style="max-width: 600px; margin: 0 auto; background-color: #ffffff; padding: 40px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+                <h2 style="font-size: 24px; color: #333333; margin-bottom: 20px;">Feedback</h2>
+                <p style="font-size: 16px; color: #555555; margin-bottom: 30px;">Dear Admin,</p>
+                <p style="font-size: 16px; color: #555555; margin-bottom: 30px;">A user named ${name} has provided feedback. Please review the details below:</p>
+                <p style="font-size: 16px; color: #555555; margin-bottom: 30px;"><strong>Subject: ${subject}</strong></p>
+                <p style="font-size: 16px; color: #555555; margin-bottom: 30px;">Message:</p>
+                <p style="font-size: 16px; color: #555555; margin-bottom: 30px;">${message}</p>
+                <p style="font-size: 16px; color: #555555;">Thank you for your attention to this feedback!</p>
+                <p style="font-size: 16px; color: #555555;">Best regards,<br>TECH MARVEL</p>
+              </div>
+            </body>
+          </html>
             `,
           };
           await transporter.sendMail(mailOptions)
