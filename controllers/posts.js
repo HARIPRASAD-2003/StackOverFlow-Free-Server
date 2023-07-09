@@ -65,3 +65,32 @@ export const LikePost = async(req, res) => {
         res.status(408).json({message: error.message})
     }
 }
+
+export const reportPost = async(req, res) => {
+    const {id: _id} = req.params
+    const {userId} = req.body
+
+    if(!mongoose.Types.ObjectId.isValid(_id)){
+        return res.status(404).send('post unavailable...')
+    }
+
+    try {
+        const post = await Post.findById(_id)
+        const reportIndex = post.reports.findIndex((id) => id === String(userId))
+        // const downIndex = post.downVote.findIndex((id) => id === String(userId))
+
+        if(reportIndex === -1){
+            post.reports.push(String(userId))
+            console.log("reported")
+            await Post.findByIdAndUpdate( _id, post)
+        }
+        if(post.reports.length > 2){
+            await Post.findByIdAndRemove(_id);
+        }
+
+        res.status(200).json({message: 'reported Successfully'})
+
+    } catch (error) {
+        res.status(408).json({message: error.message})
+    }
+}
