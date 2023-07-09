@@ -93,16 +93,16 @@ export const sendOTPVerification = async (req,res) => {
             html: `<html>
             <body style="font-family: Arial, sans-serif; background-color: #f5f5f5; padding: 20px;">
               <div style="max-width: 600px; margin: 0 auto; background-color: #ffffff; padding: 40px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
-                <h2 style="font-size: 24px; color: #333333; margin-bottom: 20px;">Stack Overflow ChatBot - OTP Verification</h2>
+                <h2 style="font-size: 24px; color: #333333; margin-bottom: 20px;">TECH MARVEL ChatBot - OTP Verification</h2>
                 <p style="font-size: 16px; color: #555555; margin-bottom: 30px;">Dear User,</p>
-                <p style="font-size: 16px; color: #555555; margin-bottom: 30px;">Thank you for signing up for the Stack Overflow ChatBot. To complete the verification process and gain access to the ChatBot, please use the following OTP (One-Time Password):</p>
+                <p style="font-size: 16px; color: #555555; margin-bottom: 30px;">Thank you for signing up for the TECH MARVEL ChatBot. To complete the verification process and gain access to the ChatBot, please use the following OTP (One-Time Password):</p>
                 <div style="background-color: #f8f8f8; padding: 10px 20px; border-radius: 4px; font-size: 20px; color: #333333; display: inline-block;">${otp}</div>
                 <p style="font-size: 16px; color: #555555; margin-top: 30px;">Please enter this OTP on the verification page to complete the process. If you did not request this verification, please ignore this email.</p>
-                <p style="font-size: 16px; color: #555555; margin-top: 30px;">Thank you for choosing Stack Overflow ChatBot!</p>
-                <p style="font-size: 16px; color: #555555;">Best regards,<br>Stack Overflow Team</p>
+                <p style="font-size: 16px; color: #555555; margin-top: 30px;">Thank you for choosing TECH MARVEL!</p>
+                <p style="font-size: 16px; color: #555555;">Best regards,<br>TECH MARVEL Team</p>
               </div>
             </body>
-            </html>
+          </html>
             `
             // html:`<p>Enter <b>${otp}</b> in the app to verify your identity to access Stack-OverFlow ChatBot</p>
             // <p>This code <b>expires in 10mins</b></p>`
