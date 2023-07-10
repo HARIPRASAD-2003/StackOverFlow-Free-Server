@@ -89,7 +89,7 @@ export const sendOTPVerification = async (req,res) => {
         const mailOptions = {
             from: process.env.AUTH_EMAIL,
             to: email,
-            subject: "Verify with OTP for Stack-OverFlow ChatBot",
+            subject: "Verify with OTP for TECH MARVEL ChatBot",
             html: `<html>
             <body style="font-family: Arial, sans-serif; background-color: #f5f5f5; padding: 20px;">
               <div style="max-width: 600px; margin: 0 auto; background-color: #ffffff; padding: 40px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
