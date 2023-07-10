@@ -14,6 +14,7 @@ const PostSchema = mongoose.Schema({
         commentBody: String,
         userCommented: String,
         userId: String,
+        reports: {type: [String], default: []},
         commentedOn: {type: Date, default: Date.now}
     }]
 })

@@ -84,7 +84,7 @@ export const reportPost = async(req, res) => {
             console.log("reported")
             await Post.findByIdAndUpdate( _id, post)
         }
-        if(post.reports.length > 2){
+        if(post.reports.length > 10){
             await Post.findByIdAndRemove(_id);
         }
 

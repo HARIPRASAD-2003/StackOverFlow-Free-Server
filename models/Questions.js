@@ -15,6 +15,7 @@ const QuestionSchema = mongoose.Schema({
         answerBody: String,
         userAnswered: String,
         userId: String,
+        reports: {type: [String], default: []},
         answerOn: {type: Date, default: Date.now}
     }]
 })
