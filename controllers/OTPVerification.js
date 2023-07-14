@@ -29,7 +29,7 @@ const transporter = nodemailer.createTransport({
 export const sendResetMail = async(req, res) => {
     const {id, email} = req.body
 
-    if (!mongoose.Types.ObjectId.isValid(_id)) {
+    if (!mongoose.Types.ObjectId.isValid(id)) {
         return res.status(404).send("user unavailable...");
       }
     const resetLink = `https://techmarvel.netlify.app/reset-password/${id}`
@@ -45,7 +45,7 @@ export const sendResetMail = async(req, res) => {
               <div
                 style="max-width: 600px; margin: 0 auto; background-color: #ffffff; padding: 40px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);"
               >
-                <h2 style="font-size: 24px; color: #333333; margin-bottom: 20px;">Reset Password</h2> 
+                <h2 style="font-size: 24px; color: #333333; margin-bottom: 20px;">Reset Password</h2>
                 <p style="font-size: 16px; color: #555555; margin-bottom: 30px;">Dear ${user.name},</p>
                 <p style="font-size: 16px; color: #555555; margin-bottom: 30px;">
                   We have received a request to reset your password. Please click the button below to reset your password.
