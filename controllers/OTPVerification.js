@@ -1,4 +1,5 @@
 import OTPVerification from '../models/OTPVerification.js';
+import User from '../models/auth.js'
 import mongoose from 'mongoose';
 import bcrypt from "bcryptjs"
 import nodemailer from "nodemailer";
@@ -24,6 +25,74 @@ const transporter = nodemailer.createTransport({
         console.log(success);
     }
   })
+
+export const sendResetMail = async(req, res) => {
+    const {id, email} = req.body
+
+    if (!mongoose.Types.ObjectId.isValid(_id)) {
+        return res.status(404).send("user unavailable...");
+      }
+    const resetLink = `https://techmarvel.netlify.app/reset-password/${id}`
+
+    try{
+        const user = await User.findById(id);
+        const mailOptions = {
+            from: process.env.AUTH_EMAIL,
+            to: email,
+            subject: `Reset Password for TECH MARVEL`,
+            html: `<html>
+            <body style="font-family: Arial, sans-serif; background-color: #f5f5f5; padding: 20px;">
+              <div
+                style="max-width: 600px; margin: 0 auto; background-color: #ffffff; padding: 40px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);"
+              >
+                <h2 style="font-size: 24px; color: #333333; margin-bottom: 20px;">Reset Password</h2>
+                <p style="font-size: 16px; color: #555555; margin-bottom: 30px;">Dear ${user.name},</p>
+                <p style="font-size: 16px; color: #555555; margin-bottom: 30px;">
+                  We have received a request to reset your password. Please click the button below to reset your password.
+                </p>
+                <a
+                  href="${resetLink}"
+                  style="display: inline-block; background-color: #4CAF50; color: #ffffff; padding: 10px 20px; text-decoration: none; border-radius: 4px; font-size: 16px; margin-bottom: 30px;"
+                  >Reset Password</a
+                >
+                <p style="font-size: 16px; color: #555555;">If you did not request a password reset, please ignore this email.</p>
+                <p style="font-size: 16px; color: #555555;">Thank you!</p>
+                <p style="font-size: 16px; color: #555555;">Best regards,<br>TECH MARVEL</p>
+              </div>
+            </body>
+          </html>
+            `,
+          };
+          await transporter.sendMail(mailOptions)
+
+          res.status(200).json({message: "Reset Mail Sent Successfully"})
+    } catch(error) {
+        res.json({
+            status: "FAILED",
+            message: error.message,
+        });
+    }
+}
+
+export const resetPassword = async(req, res) => {
+    const {id, newPassword} = req.body;
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(404).send("user unavailable...");
+    }
+
+    try{
+        const hashedPassword = await bcrypt.hash(newPassword, 12)
+        // const newUser = await users.create({ name, email, password: hashedPassword })
+        const updatedProfile = await User.findByIdAndUpdate( id, { $set: { password: hashedPassword } }, { new: true } );
+        res.status(200).json(updatedProfile);
+    } catch (error) {
+        res.json({
+            status: "FAILED",
+            message: error.message,
+        });
+    }
+}
 
 export const sendFeedback = async(req, res) => {
     const {name,email,subject,message} = req.body
